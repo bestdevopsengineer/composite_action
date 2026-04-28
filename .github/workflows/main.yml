@@ -6,6 +6,6 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: ./.github/actions/run-maven
+      - uses: ./.github/actions/run-tests
         with:
           java-version: "21"
