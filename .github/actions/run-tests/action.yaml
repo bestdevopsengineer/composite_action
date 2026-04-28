@@ -1,0 +1,20 @@
+name: "Run Tests"
+description: "Install dependencies and run tests"
+
+inputs:
+  node-version:
+    required: true
+
+runs:
+  using: "composite"
+  steps:
+    - name: Setup Node
+      uses: actions/setup-node@v4
+      with:
+        node-version: ${{ inputs.node-version }}
+
+    - name: Install dependencies
+      run: npm install
+
+    - name: Run tests
+      run: npm test
