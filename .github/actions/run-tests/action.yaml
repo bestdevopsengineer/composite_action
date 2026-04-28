@@ -1,23 +1,27 @@
-name: "Run Tests"
-description: "Install dependencies and run tests"
+name: "Run Maven Build"
+description: "Build and test a Maven Spring Boot application"
 
 inputs:
-  node-version:
+  java-version:
     required: true
     type: string
 
 runs:
   using: "composite"
   steps:
-    - name: Setup Node
-      uses: actions/setup-node@v4
-      with:
-        node-version: ${{ inputs.node-version }}
+    - name: Checkout repository
+      uses: actions/checkout@v4
 
-    - name: Install dependencies
-      run: npm install
+    - name: Set up Java
+      uses: actions/setup-java@v4
+      with:
+        distribution: temurin
+        java-version: ${{ inputs.java-version }}
+
+    - name: Build with Maven
+      run: mvn -B clean install
       shell: bash
 
     - name: Run tests
-      run: npm test
+      run: mvn test
       shell: bash
