@@ -8,7 +8,7 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
-      - name: jjjj
+      - name: call composite action to setup java with 21 as input ,build and run tests
         uses: ./.github/actions/run-maven
         with:
           java-version: "21"
