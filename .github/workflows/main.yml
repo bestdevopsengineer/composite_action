@@ -1,0 +1,14 @@
+name: "CI Pipeline"
+
+on: [push]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Run shared test action
+        uses: ./.github/actions/run-tests
+        with:
+          node-version: "18"
